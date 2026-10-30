@@ -373,7 +373,7 @@ function roundToStep(valueMinutes) {
 }
 
 /* ================== SRS Model (local) ================== */
-const SRS_KEY = `${NS}_srs_qv1`;
+const SRS_KEY = `${NS}_srs_qkv1`;
 function readSrs() {
   try { return JSON.parse(localStorage.getItem(SRS_KEY) || '{}'); } catch { return {}; }
 }
