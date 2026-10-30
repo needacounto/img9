@@ -1,0 +1,20 @@
+{
+  "stash": {
+    "username": "needacounto",
+    "images": true,
+    "issueStartNumber": 1,
+    "issueEndNumber": 2
+  },
+  "stash2": {
+    "username": "needacounto",
+    "images": true,
+    "issueStartNumber": 1,
+    "issueEndNumber": 33
+  },
+  "stash3": {
+    "username": "needacounto",
+    "images": true,
+    "issueStartNumber": 1,
+    "issueEndNumber": 0
+  }
+}
