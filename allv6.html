@@ -373,7 +373,7 @@ function roundToStep(valueMinutes) {
 }
 
 /* ================== SRS Model (local) ================== */
-const SRS_KEY = `${NS}_srs_v1`;
+const SRS_KEY = `${NS}_srs_qv1`;
 function readSrs() {
   try { return JSON.parse(localStorage.getItem(SRS_KEY) || '{}'); } catch { return {}; }
 }
@@ -645,7 +645,7 @@ function sampleIndex(probs, issues) {
       const info=repos[repoName];
       if(!info) continue;
       if(info.images && !IMAGE_EXT.test(filePath)) continue;
-      issues.push(`https://github.com/${info.username}/img/blob/in7/files/${repoName}/${fileName}`);
+      issues.push(`https://github.com/${info.username}/img9/blob/in7/files/${repoName}/${fileName}`);
     }
     const n=issues.length;
 
