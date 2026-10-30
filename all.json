@@ -1,0 +1,27 @@
+{
+  "skyway": {
+    "scheduler-max": 33
+  },
+  "repositories": {
+    "stash": {
+      "username": "needacounto",
+      "images": true,
+      "issueStartNumber": 1,
+      "issueEndNumber": 3
+    },
+    "stash2": {
+      "username": "needacounto",
+      "images": true,
+      "issueStartNumber": 1,
+      "issueEndNumber": 0
+    }
+  },
+  "formulas": [
+    "random",
+    "leftLeaning",
+    "rightLeaning1",
+    "rightLeaning1",
+    "recent20Percent",
+    "recent5Percent"
+  ]
+}
